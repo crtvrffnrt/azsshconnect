@@ -1,6 +1,6 @@
 # SSH Azure Deployment Script
 ## Introduction 
-This script is a powerful automation written in Bash or powershell that handles the a quick and dirty but secure deployment of a new Ubuntu virtual machine (VM) on Azure and establishes an SSH connection to this VM.
+This script is a powerful automation written in Bash or powershell that handles a quick and dirty but secure deployment of a new Ubuntu virtual machine (VM) on Azure and establishes an SSH connection to this VM.
 
 ```
 
