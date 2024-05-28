@@ -22,13 +22,14 @@ check_azure_authentication() {
     fi
 }
 # Delete old resource groups created by this script
-delete_old_resource_groups() {
-    old_groups=$(az group list --query "[?starts_with(name, 'azssh-')].name" -o tsv)
-    if [ -n "$old_groups" ]; then
-        display_message "Deleting old resource groups created by this script..." "yellow"
-        echo "$old_groups" | xargs -I {} az group delete --name {} --yes --no-wait
+az group list --query "[?starts_with(name, 'azssh-')].name" -o tsv | while read -r line; do
+    az group delete --name $line --yes --no-wait
+    if [ $? -eq 0 ]; then
+        echo "Successfully deleted resource group $line"
+    else
+        echo "Failed to delete resource group $line"
     fi
-}
+done
 # Main function
 main() {
     display_message "Starting the deployment process..." "blue"
