@@ -26,13 +26,17 @@ function check_azure_authentication {
 }  
   
 # Delete old resource groups created by this script  
-function delete_old_resource_groups {  
-    $old_groups = az group list --query "[?starts_with(name, 'azssh-')].name" -o tsv  
-    if (-not [string]::IsNullOrWhiteSpace($old_groups)) {  
-        display_message "Deleting old resource groups created by this script..." "yellow"  
-        $old_groups | ForEach-Object { az group delete --name $_ --yes --no-wait }  
+az group list --query "[?starts_with(name, 'azssh-')].name" -o tsv | ForEach-Object {  
+    $group = $_  
+    $deleteGroup = az group delete --name $group --yes --no-wait  
+    if ($LASTEXITCODE -eq 0) {  
+        Write-Output "Successfully deleted resource group $group"  
+    }  
+    else {  
+        Write-Output "Failed to delete resource group $group"  
     }  
 }  
+ 
   
 # Main function  
 function main {  
