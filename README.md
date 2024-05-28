@@ -2,7 +2,7 @@
 ## Introduction 
 This script is a powerful automation written in Bash or powershell that handles the a quick and dirty but secure deployment of a new Ubuntu virtual machine (VM) on Azure and establishes an SSH connection to this VM.
 
-
+```
 
              ______  _    _   _____    ______              __      __  __  __                _____    _____   _    _                _____    ____    _   _   _   _   ______    _____   _______ 
      /\     |___  / | |  | | |  __ \  |  ____|      _      \ \    / / |  \/  |      _       / ____|  / ____| | |  | |      _       / ____|  / __ \  | \ | | | \ | | |  ____|  / ____| |__   __|
@@ -11,7 +11,7 @@ This script is a powerful automation written in Bash or powershell that handles 
   / ____ \   / /__  | |__| | | | \ \  | |____      |_|        \  /    | |  | |     |_|      ____) |  ____) | | |  | |     |_|     | |____  | |__| | | |\  | | |\  | | |____  | |____     | |   
  /_/    \_\ /_____|  \____/  |_|  \_\ |______|                 \/     |_|  |_|             |_____/  |_____/  |_|  |_|              \_____|  \____/  |_| \_| |_| \_| |______|  \_____|    |_|   
                                                                                                                                                                                                
-                                                                                                                                                                                               
+```                                                                                                                                                                                               
            
                                                                                                                                                                            
 
