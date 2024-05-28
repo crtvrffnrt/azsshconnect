@@ -18,6 +18,12 @@ This script is a powerful automation written in Bash or powershell that handles 
 ## Prerequisites
 Before you can use this script, ensure that you have the Azure CLI installed and configured with the appropriate permissions. 
 
+## How to Use
+### Bash
+```
+az login --use-device-code && git clone https://github.com/crtvrffnrt/azsshconnect.git && chmod +x ./azsshconnect/azsshconnect.sh && ./azsshconnect/azsshconnect.sh
+```
+
 ## Script
 In its operation, this script performs the following actions:
 - It creates a new resource group on Azure with a uniquely generated name.
