@@ -10,3 +10,8 @@ In its operation, this script performs the following actions:
 - It creates a new resource group on Azure with a uniquely generated name.
 - It generates a new SSH key pair.
 - It creates a new Ubuntu VM in the created resource group and sets up the SSH connection using the generated SSH key pair.
+
+if you are playing around with this script many Resource-Groups will be deployed. Use this oneliner to delete all Resource Groups created by the script
+```
+az group list --query "[?starts_with(name, '171')].name" -o tsv | xargs -I {} az group delete --name {} --yes --no-wait
+```
