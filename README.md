@@ -29,6 +29,8 @@ In its operation, this script performs the following actions:
 - It creates a new resource group on Azure with a uniquely generated name.
 - It generates a new SSH key pair.
 - It creates a new Ubuntu VM in the created resource group and sets up the SSH connection using the generated SSH key pair.
+- Following Resources will be created:
+![image](https://github.com/crtvrffnrt/azsshconnect/assets/115865719/da04abdc-27bf-414c-9bab-151fb11c7f29)
 
 ## Security Features
 To enhance security, the script performs the following additional actions:
