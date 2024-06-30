@@ -32,6 +32,19 @@ In its operation, this script performs the following actions:
 - Following Resources will be created:
 ![image](https://github.com/crtvrffnrt/azsshconnect/assets/115865719/da04abdc-27bf-414c-9bab-151fb11c7f29)
 
+## `--do-not-delete` Flag
+
+### Overview
+
+The `--do-not-delete` flag is an optional argument for the deployment script. When this flag is provided, the script will skip the step of deleting old resource groups that were previously created by the script. This can be useful if you want to retain the older resource groups for any reason, such as debugging or auditing.
+
+### Usage
+
+To use the `--do-not-delete` flag, simply add it to the command when executing the script:
+
+```sh
+./deploy_azure_vm.sh --do-not-delete
+
 ## Security Features
 To enhance security, the script performs the following additional actions:
 
