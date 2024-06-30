@@ -44,7 +44,7 @@ To use the `--do-not-delete` flag, simply add it to the command when executing t
 
 ```sh
 ./deploy_azure_vm.sh --do-not-delete
-
+```
 ## Security Features
 To enhance security, the script performs the following additional actions:
 
