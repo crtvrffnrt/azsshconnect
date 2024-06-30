@@ -21,24 +21,45 @@ check_azure_authentication() {
         exit 1
     fi
 }
+
 # Delete old resource groups created by this script
-az group list --query "[?starts_with(name, 'azssh-')].name" -o tsv | while read -r line; do
-    az group delete --name $line --yes --no-wait
-    if [ $? -eq 0 ]; then
-        echo "Successfully deleted resource group $line"
-    else
-        echo "Failed to delete resource group $line"
-    fi
-done
+delete_old_resource_groups() {
+    az group list --query "[?starts_with(name, 'azssh-')].name" -o tsv | while read -r line; do
+        az group delete --name $line --yes --no-wait
+        if [ $? -eq 0 ]; then
+            echo "Successfully deleted resource group $line"
+        else
+            echo "Failed to delete resource group $line"
+        fi
+    done
+}
+
 # Main function
 main() {
     display_message "Starting the deployment process..." "blue"
 
+    # Check for the --do-not-delete flag
+    local do_not_delete=false
+    for arg in "$@"; do
+        case $arg in
+            --do-not-delete)
+                do_not_delete=true
+                shift
+                ;;
+        esac
+    done
+
+    # Check Azure authentication
     check_azure_authentication
+
+    # Delete old resource groups if the flag is not set
+    if [ "$do_not_delete" = false ]; then
+        delete_old_resource_groups
+    fi
 
     # Get the current public IP of the local machine
     local_ip=$(curl -s https://ipinfo.io/ip)
-    echo "your current ip is:" $local_ip
+    echo "Your current IP is: $local_ip"
 
     # Create a resource group
     random_value=$(( $(date +%s%N) + RANDOM ))
@@ -70,5 +91,4 @@ main() {
     ssh -i $ssh_key_name sshusername@$public_ip
 }
 
-main
-
+main "$@"
